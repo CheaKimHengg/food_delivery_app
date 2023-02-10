@@ -29,9 +29,9 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main Page'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Main Page'),
+      // ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: _selectedIndex,
@@ -39,6 +39,7 @@ class _MainPageState extends State<MainPage> {
         onItemSelected: (index) => setState(() {
           _selectedIndex = index;
         }),
+
         itemCornerRadius: 12,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         items: <BottomNavyBarItem>[
@@ -48,7 +49,7 @@ class _MainPageState extends State<MainPage> {
             activeColor: Colors.red,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.people),
+            icon: Icon(Icons.shopping_bag_outlined),
             title: Text('Orders'),
             activeColor: Colors.purpleAccent,
           ),
@@ -58,7 +59,7 @@ class _MainPageState extends State<MainPage> {
             activeColor: Colors.pink,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.message_outlined),
+            icon: Icon(Icons.person),
             title: Text('Profile'),
             activeColor: Colors.pink,
           ),

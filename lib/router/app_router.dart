@@ -18,9 +18,7 @@ Route<RouteSettings> onGenerateRoute(RouteSettings settings) {
       );
     case HomePage.routeName:
       return MaterialPageRoute(
-        builder: (context) => HomePage(
-          arguments: args as Map<String, dynamic>,
-        ),
+        builder: (context) => HomePage(),
       );
     case GetStartedPage.routeName:
       return MaterialPageRoute(
