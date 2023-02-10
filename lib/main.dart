@@ -45,6 +45,14 @@ class MyApp extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(36),
             ),
+            textStyle: Theme.of(context).textTheme.button!.copyWith(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 50,
+              vertical: 15,
+            ),
           ),
         ),
       ),

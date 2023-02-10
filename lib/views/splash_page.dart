@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/views/get_started_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -14,7 +15,14 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(
+        context,
+        GetStartedPage.routeName,
+        arguments: GetStartedPageArgument(
+          title: "Delivery",
+          description: "Order food from your favorite restaurants",
+        ),
+      );
     });
   }
 
@@ -32,6 +40,7 @@ class _SplashPageState extends State<SplashPage> {
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/img/bg_splash_page.png'),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
