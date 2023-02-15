@@ -16,11 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'kantumruy_pro',
+        primaryColor: primaryColor,
         colorScheme: ColorScheme.light(
             primary: primaryColor,
             secondary: secondaryColor,
             tertiary: tertiaryColor),
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.blueGrey[50],
         appBarTheme: AppBarTheme(
           color: Colors.transparent,
           elevation: 0,
