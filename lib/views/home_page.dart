@@ -22,7 +22,62 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildTopSelection(),
+              const SizedBox(
+                height: 12,
+              ),
               SearchAndFilterWidget(),
+              Container(
+                margin: const EdgeInsets.all(16),
+                height: 180,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        margin: const EdgeInsets.only(right: 16),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: Image.asset('assets/img/burger.png').image,
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 2),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Text(
+                              "Special Deal for December",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(color: Colors.white),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Container(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Text("Buy Now"),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: secondaryColor,
+                                  foregroundColor: Colors.white),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
