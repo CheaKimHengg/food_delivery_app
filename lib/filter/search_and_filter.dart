@@ -55,7 +55,7 @@ class SearchAndFilterWidget extends StatelessWidget {
               ]),
           child: Container(
             decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor.withOpacity(0.4),
+                color: Theme.of(context).primaryColor.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(10)),
             child: IconButton(
               onPressed: () {},

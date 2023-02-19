@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+import 'package:food_delivery_app/filter/top_search.dart';
+
 import '../filter/restaurant_card.dart';
-import '../filter/search_and_filter.dart';
 
 class PopularListPage extends StatelessWidget {
   const PopularListPage({Key? key}) : super(key: key);
@@ -16,7 +16,10 @@ class PopularListPage extends StatelessWidget {
           SliverAppBar(
             leadingWidth: 70,
             leading: Padding(
-              padding: EdgeInsets.only(left: 20, top: 20),
+              padding: EdgeInsets.only(
+                left: 20,
+                top: 20,
+              ),
               child: Row(
                 children: [
                   Container(
@@ -34,7 +37,7 @@ class PopularListPage extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withOpacity(0.2),
+                      color: Theme.of(context).primaryColor.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
@@ -48,22 +51,23 @@ class PopularListPage extends StatelessWidget {
                   'Popular Restaurant',
                   style: Theme.of(context).textTheme.subtitle1!.copyWith(
                       color: Colors.black,
-                      fontSize: 26,
+                      fontSize: 21,
                       fontWeight: FontWeight.w600),
                 ),
               ],
             ),
           ),
-          SearchAndFilterWidget(),
+          TopSearchCustomAppBar(),
           SliverPadding(
             padding: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-              bottom: 16,
+              left: 20,
+              right: 20,
+              bottom: 30,
             ),
             sliver: SliverGrid(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
+                mainAxisSpacing: 20,
               ),
               delegate: SliverChildBuilderDelegate((context, index) {
                 return RestaurantItemCard(

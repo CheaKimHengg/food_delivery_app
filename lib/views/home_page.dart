@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/common/constants.dart';
+import 'package:food_delivery_app/views/profile_page.dart';
 
+import '../filter/notification.dart';
 import '../filter/restaurant_card.dart';
 import '../filter/search_and_filter.dart';
 import '../screen/popular_page.dart';
@@ -35,7 +37,6 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.pushNamed(context, PopularListPage.routeName);
                 },
-
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -53,14 +54,14 @@ class _HomePageState extends State<HomePage> {
                       title: 'Cloudy Food',
                       subtitle: '10 min',
                       imagePath: 'assets/img/cloudy_resto.png',
-                      margin: EdgeInsets.only(right: 16, left: 16, bottom: 16),
+                      margin: EdgeInsets.only(right: 16, bottom: 16),
                     ),
                     RestaurantItemCard(
                       index: 2,
                       title: 'Circlo Food',
                       subtitle: '10 min',
                       imagePath: 'assets/img/circlo_resto.png',
-                      margin: EdgeInsets.only(right: 16, left: 16, bottom: 16),
+                      margin: EdgeInsets.only(right: 16, bottom: 16),
                     ),
                   ],
                 ),
@@ -133,7 +134,9 @@ class _HomePageState extends State<HomePage> {
               _TitleSectionWidget(
                 leadingText: 'Popular Foods',
                 trailingText: 'View all',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, PopularListPage.routeName);
+                },
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -187,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 32),
+                    SizedBox(width: 17),
                     Container(
                       height: 180,
                       width: 160,
@@ -232,7 +235,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(width: 32),
+                    SizedBox(width: 17),
                     Container(
                       height: 180,
                       width: 160,
@@ -281,7 +284,9 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
@@ -366,27 +371,102 @@ class _HomePageState extends State<HomePage> {
               'Hello, KimHeng !',
               style: Theme.of(context).textTheme.subtitle1!.copyWith(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 21,
                   fontWeight: FontWeight.w600),
             ),
           ),
-          Icon(
-            Icons.notifications_active,
-            color: Theme.of(context).primaryColor,
-          )
+          Stack(
+            children: [
+              IconButton(
+                onPressed: () {
+                  final route = MaterialPageRoute(
+                    builder: (context) => Notifications(),
+                  );
+                  Navigator.push(context, route);
+                },
+                icon: Icon(
+                  Icons.notifications,
+                ),
+                color: Theme.of(context).primaryColor,
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: Container(
+                  height: 10,
+                  width: 10,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '1',
+                      style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                          color: Colors.white,
+                          fontSize: 8,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 }
 
+// class _TitleSectionWidget extends StatelessWidget {
+//   const _TitleSectionWidget({
+//     super.key,
+//     required this.leadingText,
+//     required this.trailingText,
+//     this.onTap,
+//   });
+//
+//   final String leadingText;
+//   final String trailingText;
+//   final VoidCallback? onTap;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(horizontal: 16),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           Text(
+//             leadingText,
+//             style: Theme.of(context).textTheme.subtitle1!.copyWith(
+//                   color: Colors.black,
+//                   fontWeight: FontWeight.w600,
+//                 ),
+//           ),
+//           TextButton(
+//             onPressed: () {},
+//             child: Text(
+//               trailingText,
+//               style: TextStyle(
+//                 fontSize: 14,
+//                 fontWeight: FontWeight.w600,
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
 class _TitleSectionWidget extends StatelessWidget {
   const _TitleSectionWidget({
-    super.key,
+    Key? key,
     required this.leadingText,
     required this.trailingText,
     this.onTap,
-  });
+  }) : super(key: key);
 
   final String leadingText;
   final String trailingText;
@@ -407,15 +487,9 @@ class _TitleSectionWidget extends StatelessWidget {
                 ),
           ),
           TextButton(
-            onPressed: () {},
-            child: Text(
-              trailingText,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
+            onPressed: onTap,
+            child: Text(trailingText),
+          )
         ],
       ),
     );
