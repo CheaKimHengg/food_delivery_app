@@ -5,6 +5,7 @@ import 'package:food_delivery_app/views/home_page.dart';
 import 'package:food_delivery_app/views/profile_page.dart';
 import 'package:food_delivery_app/views/splash_page.dart';
 
+import '../screen/popular_page.dart';
 import '../views/main_page.dart';
 import '../views/orders_pages.dart';
 
@@ -45,6 +46,10 @@ Route<RouteSettings> onGenerateRoute(RouteSettings settings) {
     case ProfilePage.routeName:
       return MaterialPageRoute(
         builder: (context) => ProfilePage(),
+      );
+    case PopularListPage.routeName:
+      return MaterialPageRoute(
+        builder: (context) =>  PopularListPage(),
       );
 
     default:
